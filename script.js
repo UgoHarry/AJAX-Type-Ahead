@@ -22,12 +22,17 @@ function displayMatches() {
   const listr = matched.map((item) => { // USE MAP FUNCTION ON NEW ARRAY TO ADD ITEMS TO PAGE MARKUP
     return `<li>
               <span class="name">${item.city}, ${item.state}</span>
-              <span class="population">${item.population}</span>
+              <span class="population">${numComma(item.population)}</span>
             </li>
     `
   }).join(""); // USE JOIN FUNCTION TO CLEAR OUT SPACE AND COMMAS FROM NEW ARRAY PRIOR TO ADDING TO MARKUP
   matchList.innerHTML = listr;
 }
+
+function numComma(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 
 
 const matchList = document.querySelector(".match-list")
